@@ -7,6 +7,9 @@
     <link rel="stylesheet" href="styles.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <script src="https://kit.fontawesome.com/your-kit-code.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.js"></script>
 </head>
 <body>
     <header>
@@ -21,51 +24,117 @@
                     <li><a href="#donate" class="nav-link">Donate</a></li>
                     <li><a href="#shop" class="nav-link">Shop</a></li>
                     <li><a href="#volunteer" class="nav-link">Volunteer</a></li>
+                    <li><a href="#financial" class="nav-link">Financial Support</a></li>
                     <li><a href="#about" class="nav-link">About</a></li>
                 </ul>
             </nav>
             <div class="login-signup">
-                <a href="#" class="btn btn-outline" id="loginBtn">Login</a>
-                <a href="#" class="btn btn-primary" id="signupBtn">Sign Up</a>
+                <a href="#" class="btn btn-outline" id="loginBtn">
+                    <i class="fas fa-user"></i> Login
+                </a>
+                <a href="#" class="btn btn-primary" id="signupBtn">
+                    <i class="fas fa-user-plus"></i> Sign Up
+                </a>
+            </div>
+        </div>
+        <div class="search-container">
+            <div class="search-wrapper">
+                <div class="search-box">
+                    <select id="category-filter" class="search-select">
+                        <option value="">All Categories</option>
+                        <option value="donations">Donations</option>
+                        <option value="volunteer">Volunteer Work</option>
+                        <option value="shop">Shop Items</option>
+                        <option value="financial">Financial Support</option>
+                    </select>
+                    <input type="text" id="location-search" placeholder="Enter your location">
+                    <button class="btn btn-primary" onclick="searchLocation()">
+                        <i class="fas fa-search"></i> Search
+                    </button>
+                </div>
             </div>
         </div>
     </header>
 
     <!-- Hero Section -->
     <section class="hero">
-        <div class="hero-content">
-            <h1>Making Communities Stronger Together</h1>
-            <p>Connect, Support, and Empower your local community through donations, volunteering, and shopping for a cause.</p>
-            <div class="hero-buttons">
-                <a href="#donate" class="btn btn-primary btn-large">Start Donating</a>
-                <a href="#volunteer" class="btn btn-outline btn-large">Volunteer Now</a>
+        <div class="hero-slider">
+            <!-- Slide 1 - Donations -->
+            <div class="hero-slide active">
+                <div class="slide-content">
+                    <h1>Give Back to Your Community</h1>
+                    <p>Transform lives by donating items to those in need. Every donation makes a difference.</p>
+                    <div class="hero-buttons">
+                        <a href="#donate" class="btn btn-primary btn-large">
+                            <i class="fas fa-hand-holding-heart"></i> Start Donating
+                        </a>
+                    </div>
+                </div>
+                <div class="slide-bg" style="background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.5)), url('https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?auto=format&fit=crop&q=80') center/cover no-repeat"></div>
             </div>
-        </div>
-        <div class="hero-shape"></div>
-    </section>
 
-    <!-- Search Section -->
-    <section class="search-container">
-        <div class="search-wrapper">
-            <div class="search-box">
-                <select id="category-filter" class="search-select">
-                    <option value="">All Categories</option>
-                    <option value="donations">Donations</option>
-                    <option value="volunteer">Volunteer Work</option>
-                    <option value="shop">Shop Items</option>
-                </select>
-                <input type="text" id="location-search" placeholder="Enter your location">
-                <button class="btn btn-primary" onclick="searchLocation()">
-                    <i class="fas fa-search"></i> Search
+            <!-- Slide 2 - Shop -->
+            <div class="hero-slide">
+                <div class="slide-content">
+                    <h1>Shop for a Greater Cause</h1>
+                    <p>Purchase pre-loved items and support community initiatives. Every purchase helps someone in need.</p>
+                    <div class="hero-buttons">
+                        <a href="#shop" class="btn btn-primary btn-large">
+                            <i class="fas fa-shopping-bag"></i> Shop Now
+                        </a>
+                    </div>
+                </div>
+                <div class="slide-bg" style="background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.5)), url('https://images.unsplash.com/photo-1555529669-e69e7aa0ba9a?auto=format&fit=crop&q=80') center/cover no-repeat"></div>
+            </div>
+
+            <!-- Slide 3 - Volunteer -->
+            <div class="hero-slide">
+                <div class="slide-content">
+                    <h1>Be the Change</h1>
+                    <p>Join our volunteer network and make a real impact in your community. Your time matters.</p>
+                    <div class="hero-buttons">
+                        <a href="#volunteer" class="btn btn-primary btn-large">
+                            <i class="fas fa-hands-helping"></i> Volunteer Now
+                        </a>
+                    </div>
+                </div>
+                <div class="slide-bg" style="background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.5)), url('https://images.unsplash.com/photo-1593113598332-cd288d649433?auto=format&fit=crop&q=80') center/cover no-repeat"></div>
+            </div>
+
+            <!-- Slide 4 - Financial Support -->
+            <div class="hero-slide">
+                <div class="slide-content">
+                    <h1>Support Our Mission</h1>
+                    <p>Help us create lasting change through financial contributions to community programs.</p>
+                    <div class="hero-buttons">
+                        <a href="#financial" class="btn btn-primary btn-large">
+                            <i class="fas fa-dollar-sign"></i> Contribute Now
+                        </a>
+                    </div>
+                </div>
+                <div class="slide-bg" style="background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.5)), url('https://images.unsplash.com/photo-1579621970795-87facc2f976d?auto=format&fit=crop&q=80') center/cover no-repeat"></div>
+            </div>
+
+            <!-- Slider Navigation -->
+            <div class="slider-nav">
+                <button class="prev-slide" onclick="moveSlide(-1)">
+                    <i class="fas fa-chevron-left"></i>
+                </button>
+                <button class="next-slide" onclick="moveSlide(1)">
+                    <i class="fas fa-chevron-right"></i>
                 </button>
             </div>
-            <div class="popular-searches">
-                <span>Popular:</span>
-                <div class="tags">
-                    <a href="#" class="tag">Food Banks</a>
-                    <a href="#" class="tag">Clothing is good </a>
-                    <a href="#" class="tag">Education</a>
-                    <a href="#" class="tag">Healthcare</a>
+
+            <!-- Progress and Dots -->
+            <div class="slider-progress">
+                <div class="slide-dots">
+                    <span class="dot active" onclick="goToSlide(0)"></span>
+                    <span class="dot" onclick="goToSlide(1)"></span>
+                    <span class="dot" onclick="goToSlide(2)"></span>
+                    <span class="dot" onclick="goToSlide(3)"></span>
+                </div>
+                <div class="slide-progress">
+                    <div class="slide-progress-bar"></div>
                 </div>
             </div>
         </div>
@@ -75,31 +144,54 @@
     <section class="impact-stats">
         <div class="stats-container">
             <div class="stat-card">
-                <div class="stat-icon donations-icon">
-                    <i class="fas fa-gift"></i>
+                <div class="stat-circle">
+                    <div class="stat-icon donations-icon">
+                        <i class="fas fa-gift"></i>
+                    </div>
+                    <svg class="progress-ring">
+                        <circle class="progress-ring-circle" cx="60" cy="60" r="54"></circle>
+                    </svg>
+                    <span class="stat-number" data-target="15000">0</span>
                 </div>
-                <span class="stat-number" data-target="15000">0</span>
                 <span class="stat-label">Items Donated</span>
             </div>
+            
             <div class="stat-card">
-                <div class="stat-icon volunteers-icon">
-                    <i class="fas fa-hands-helping"></i>
+                <div class="stat-circle">
+                    <div class="stat-icon volunteers-icon">
+                        <i class="fas fa-hands-helping"></i>
+                    </div>
+                    <svg class="progress-ring">
+                        <circle class="progress-ring-circle" cx="60" cy="60" r="54"></circle>
+                    </svg>
+                    <span class="stat-number" data-target="5000">0</span>
                 </div>
-                <span class="stat-number" data-target="5000">0</span>
                 <span class="stat-label">Active Volunteers</span>
             </div>
+            
             <div class="stat-card">
-                <div class="stat-icon community-icon">
-                    <i class="fas fa-users"></i>
+                <div class="stat-circle">
+                    <div class="stat-icon community-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <svg class="progress-ring">
+                        <circle class="progress-ring-circle" cx="60" cy="60" r="54"></circle>
+                    </svg>
+                    <span class="stat-number" data-target="10000">0</span>
                 </div>
-                <span class="stat-number" data-target="10000">0</span>
                 <span class="stat-label">People Helped</span>
             </div>
+            
             <div class="stat-card">
-                <div class="stat-icon location-icon">
-                    <i class="fas fa-map-marker-alt"></i>
+                <div class="stat-circle">
+                    <div class="stat-icon location-icon">
+                        <i class="fas fa-map-marker-alt"></i>
+                    </div>
+                    <svg class="progress-ring">
+                        <circle class="progress-ring-circle" cx="60" cy="60" r="54"></circle>
+                    </svg>
+                    <span class="stat-number" data-target="500">0</span>
                 </div>
-                <span class="stat-number" data-target="500">0</span>
                 <span class="stat-label">Communities Served</span>
             </div>
         </div>
@@ -132,28 +224,36 @@
 
     <!-- Action Cards -->
     <section class="action-cards">
-        <div class="card donate-card">
+        <div class="card donate-card" style="background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url('https://images.unsplash.com/photo-1532629345422-7515f3d16bb6?auto=format&fit=crop&q=80') center/cover no-repeat;">
             <div class="card-content">
                 <i class="fas fa-hand-holding-heart"></i>
                 <h3>Donate Items</h3>
                 <p>Give your unused items a second life and help those in need.</p>
-                <a href="#donate" class="btn btn-primary">Donate Now</a>
+                <a href="#donate" class="btn">Donate Now</a>
             </div>
         </div>
-        <div class="card shop-card">
+        <div class="card shop-card" style="background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url('https://images.unsplash.com/photo-1472851294608-062f824d29cc?auto=format&fit=crop&q=80') center/cover no-repeat;">
             <div class="card-content">
                 <i class="fas fa-shopping-bag"></i>
                 <h3>Shop for Good</h3>
                 <p>Purchase pre-loved items and support community initiatives.</p>
-                <a href="#shop" class="btn btn-primary">Shop Now</a>
+                <a href="#shop" class="btn">Shop Now</a>
             </div>
         </div>
-        <div class="card volunteer-card">
+        <div class="card volunteer-card" style="background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url('https://images.unsplash.com/photo-1559027615-cd4628902d4a?auto=format&fit=crop&q=80') center/cover no-repeat;">
             <div class="card-content">
                 <i class="fas fa-hands-helping"></i>
                 <h3>Volunteer</h3>
                 <p>Share your time and skills to make a difference.</p>
-                <a href="#volunteer" class="btn btn-primary">Join Us</a>
+                <a href="#volunteer" class="btn">Join Us</a>
+            </div>
+        </div>
+        <div class="card financial-card" style="background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url('https://images.unsplash.com/photo-1579621970563-ebec7560ff3e?auto=format&fit=crop&q=80') center/cover no-repeat;">
+            <div class="card-content">
+                <i class="fas fa-dollar-sign"></i>
+                <h3>Financial Support</h3>
+                <p>Contribute financially to support community programs.</p>
+                <a href="#financial" class="btn">Support Now</a>
             </div>
         </div>
     </section>
@@ -176,6 +276,34 @@
                 </div>
             </div>
             <!-- Add more testimonial cards -->
+        </div>
+    </section>
+
+    <!-- Add a Featured Projects Slider -->
+    <section class="featured-projects">
+        <h2>Featured Projects</h2>
+        <div class="swiper-container">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide">
+                    <div class="project-card">
+                        <div class="project-image" style="background-image: url('https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?auto=format&fit=crop&q=80')"></div>
+                        <div class="project-content">
+                            <h3>Education Support</h3>
+                            <p>Help provide educational resources to students in need</p>
+                            <div class="progress-container">
+                                <div class="progress-bar">
+                                    <div class="progress" style="width: 75%"></div>
+                                </div>
+                                <span class="progress-text">75% Funded</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Add more swiper slides as needed -->
+            </div>
+            <div class="swiper-pagination"></div>
+            <div class="swiper-button-next"></div>
+            <div class="swiper-button-prev"></div>
         </div>
     </section>
 
