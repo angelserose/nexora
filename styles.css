@@ -60,34 +60,34 @@ header {
 }
 
 .header-container {
-    max-width: 1400px;
-    margin: 0 auto;
-    padding: 0.75rem 2rem;
+    max-width: 100%;
+    padding: 0.5rem 1rem;
     display: flex;
     align-items: center;
-    gap: 1.5rem;
+    gap: 2rem;
 }
 
 .logo {
     display: flex;
     align-items: center;
-    gap: 0.75rem;
+    gap: 0.5rem;
     margin-right: auto;
-    padding: 0.25rem 0;
+    padding: 0;
 }
 
 .logo-img {
-    height: 45px;
+    height: 35px;
     width: auto;
 }
 
 .logo-wrapper {
     display: flex;
     flex-direction: column;
+    gap: 0.1rem;
 }
 
 .logo-text {
-    font-size: 1.75rem;
+    font-size: 1.5rem;
     font-weight: 800;
     background: linear-gradient(135deg, var(--primary-main), var(--accent-blue));
     -webkit-background-clip: text;
@@ -96,10 +96,15 @@ header {
 }
 
 .tagline {
-    font-size: 0.85rem;
+    font-size: 0.75rem;
     color: var(--neutral-600);
     font-style: italic;
     letter-spacing: 0.5px;
+}
+
+/* Adjust main navigation to accommodate the logo */
+.main-nav {
+    margin-left: 2rem;
 }
 
 /* Hero Section */
@@ -1491,4 +1496,409 @@ p {
 /* Add text shadow for better readability on buttons */
 .btn-primary, .hero-buttons .btn {
     text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+}
+
+/* Page Content Styles */
+.page-content {
+    margin-top: 80px; /* Account for fixed header */
+    min-height: calc(100vh - 80px);
+}
+
+.page-hero {
+    background: linear-gradient(135deg, var(--primary-dark), var(--primary-main));
+    color: white;
+    padding: 4rem 2rem;
+    text-align: center;
+}
+
+.page-hero h1 {
+    font-size: 3.5rem;
+    margin-bottom: 1rem;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.page-hero p {
+    font-size: 1.25rem;
+    opacity: 0.9;
+}
+
+/* Grid Layouts */
+.options-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    padding: 4rem 0;
+}
+
+/* Card Styles */
+.option-card, .donation-card {
+    background: white;
+    padding: 2rem;
+    border-radius: 1rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    transition: transform 0.3s ease;
+}
+
+.option-card:hover, .donation-card:hover {
+    transform: translateY(-5px);
+}
+
+.option-card i, .donation-card i {
+    font-size: 2.5rem;
+    margin-bottom: 1.5rem;
+    color: var(--primary-main);
+}
+
+.option-card h3, .donation-card h3 {
+    margin-bottom: 1rem;
+    color: var(--neutral-900);
+}
+
+.option-card p, .donation-card p {
+    margin-bottom: 1.5rem;
+    color: var(--neutral-600);
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    .page-hero h1 {
+        font-size: 2.5rem;
+    }
+    
+    .options-grid {
+        grid-template-columns: 1fr;
+        padding: 2rem 1rem;
+    }
+}
+
+/* Donation Page Styles */
+.donation-page {
+    margin-top: 80px;
+}
+
+.donation-hero {
+    height: calc(100vh - 80px);
+    background-size: cover !important;
+    background-position: center !important;
+    background-repeat: no-repeat !important;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: white;
+}
+
+.donation-overlay {
+    background: rgba(0, 0, 0, 0.6);
+    padding: 4rem;
+    border-radius: 2rem;
+    backdrop-filter: blur(8px);
+    max-width: 600px;
+    width: 90%;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+}
+
+.donation-hero h1 {
+    font-size: 3.5rem;
+    margin-bottom: 1.5rem;
+    font-weight: 800;
+    text-shadow: 2px 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+.donation-hero p {
+    font-size: 1.25rem;
+    margin-bottom: 3rem;
+    opacity: 0.9;
+}
+
+.donation-actions {
+    display: flex;
+    gap: 2rem;
+    justify-content: center;
+}
+
+/* Donation Action Buttons */
+.btn-donate {
+    background: linear-gradient(135deg, #DC2626, #991B1B);
+    color: white;
+    padding: 1.25rem 2.5rem;
+    font-size: 1.1rem;
+    font-weight: 600;
+    border-radius: 50px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: all 0.3s ease;
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.btn-donate:hover {
+    background: linear-gradient(135deg, #B91C1C, #7F1D1D);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(220, 38, 38, 0.4);
+    border-color: rgba(255, 255, 255, 0.3);
+}
+
+.btn-claim {
+    background: linear-gradient(135deg, #2563EB, #1D4ED8);
+    color: white;
+    padding: 1.25rem 2.5rem;
+    font-size: 1.1rem;
+    font-weight: 600;
+    border-radius: 50px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: all 0.3s ease;
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.btn-claim:hover {
+    background: linear-gradient(135deg, #1E40AF, #1E3A8A);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(37, 99, 235, 0.4);
+    border-color: rgba(255, 255, 255, 0.3);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .donation-hero h1 {
+        font-size: 2.5rem;
+    }
+    
+    .donation-actions {
+        flex-direction: column;
+        gap: 1rem;
+    }
+    
+    .btn-donate, .btn-claim {
+        width: 100%;
+        justify-content: center;
+    }
+    
+    .donation-overlay {
+        padding: 2rem;
+    }
+}
+
+/* Choice Page Styles */
+.donation-choice {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    padding: 2rem;
+}
+
+.choice-container {
+    background: rgba(0, 0, 0, 0.7);
+    padding: 4rem;
+    border-radius: 2rem;
+    backdrop-filter: blur(10px);
+    text-align: center;
+    max-width: 800px;
+    width: 90%;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+}
+
+.choice-container h1 {
+    font-size: 3.5rem;
+    margin-bottom: 1rem;
+    font-weight: 800;
+    text-shadow: 2px 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+.choice-container p {
+    font-size: 1.25rem;
+    margin-bottom: 3rem;
+    opacity: 0.9;
+}
+
+.choice-buttons {
+    display: flex;
+    gap: 2rem;
+    justify-content: center;
+}
+
+.btn-choice {
+    flex: 1;
+    max-width: 300px;
+    padding: 2rem;
+    border-radius: 1.5rem;
+    text-decoration: none;
+    color: white;
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    transition: all 0.3s ease;
+    border: 2px solid rgba(255, 255, 255, 0.2);
+}
+
+.btn-choice i {
+    font-size: 2.5rem;
+}
+
+.btn-choice span {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.25rem;
+    text-align: left;
+}
+
+.btn-choice strong {
+    font-size: 1.25rem;
+    font-weight: 600;
+}
+
+.btn-choice small {
+    font-size: 0.9rem;
+    opacity: 0.9;
+}
+
+.btn-choice.btn-donate {
+    background: linear-gradient(135deg, #DC2626, #991B1B);
+}
+
+.btn-choice.btn-donate:hover {
+    background: linear-gradient(135deg, #B91C1C, #7F1D1D);
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(220, 38, 38, 0.4);
+    border-color: rgba(255, 255, 255, 0.3);
+}
+
+.btn-choice.btn-claim {
+    background: linear-gradient(135deg, #2563EB, #1D4ED8);
+}
+
+.btn-choice.btn-claim:hover {
+    background: linear-gradient(135deg, #1E40AF, #1E3A8A);
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(37, 99, 235, 0.4);
+    border-color: rgba(255, 255, 255, 0.3);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .choice-container {
+        padding: 2rem;
+    }
+
+    .choice-container h1 {
+        font-size: 2.5rem;
+    }
+
+    .choice-buttons {
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    .btn-choice {
+        max-width: 100%;
+    }
+}
+
+/* Donation Form Page Styles */
+.donation-form-page {
+    min-height: 100vh;
+    background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
+                url('https://images.unsplash.com/photo-1489987707025-afc232f7ea0f?ixlib=rb-4.0.3') center/cover no-repeat fixed;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+}
+
+.form-container {
+    background: rgba(255, 255, 255, 0.95);
+    padding: 3rem;
+    border-radius: 1.5rem;
+    width: 100%;
+    max-width: 600px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+}
+
+.form-header {
+    text-align: center;
+    margin-bottom: 2.5rem;
+}
+
+.form-header h1 {
+    color: var(--primary-dark);
+    font-size: 2.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.form-header p {
+    color: var(--neutral-600);
+}
+
+.donation-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.form-group label {
+    font-weight: 600;
+    color: var(--neutral-700);
+}
+
+.form-group input,
+.form-group textarea {
+    padding: 0.75rem;
+    border: 2px solid var(--neutral-200);
+    border-radius: 0.5rem;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+    border-color: var(--primary-main);
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+}
+
+.form-actions {
+    display: flex;
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+.form-actions .btn {
+    flex: 1;
+    padding: 1rem;
+    font-size: 1.1rem;
+    text-align: center;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .form-container {
+        padding: 2rem;
+    }
+
+    .form-header h1 {
+        font-size: 2rem;
+    }
+
+    .form-actions {
+        flex-direction: column;
+    }
 }
