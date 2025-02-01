@@ -8,11 +8,11 @@ function updateSlides(direction) {
     // Remove existing classes
     slides.forEach(slide => slide.classList.remove('active', 'prev', 'next'));
     
-    // Calculate new positions
-    const nextSlide = (currentSlide + direction + slides.length) % slides.length;
-    const prevSlide = (currentSlide - direction + slides.length) % slides.length;
+    // Calculate indices
+    const prevSlide = (currentSlide - 1 + slides.length) % slides.length;
+    const nextSlide = (currentSlide + 1) % slides.length;
     
-    // Add new classes
+    // Add classes
     slides[prevSlide].classList.add('prev');
     slides[currentSlide].classList.add('active');
     slides[nextSlide].classList.add('next');
@@ -22,18 +22,60 @@ function updateSlides(direction) {
 }
 
 function moveSlide(direction) {
+    // Clear previous interval
+    clearInterval(slideInterval);
+    
     // Update dots
     dots[currentSlide].classList.remove('active');
+    
+    // Calculate new slide index
     currentSlide = (currentSlide + direction + slides.length) % slides.length;
+    
+    // Update dot indicators
     dots[currentSlide].classList.add('active');
     
     // Update slides
     updateSlides(direction);
     
     // Reset interval
-    clearInterval(slideInterval);
     slideInterval = setInterval(() => moveSlide(1), SLIDE_DURATION);
 }
+
+// Add click event listeners to arrow buttons
+document.querySelector('.prev-slide').addEventListener('click', (e) => {
+    e.preventDefault();
+    moveSlide(-1);
+});
+
+document.querySelector('.next-slide').addEventListener('click', (e) => {
+    e.preventDefault();
+    moveSlide(1);
+});
+
+// Update the goToSlide function
+function goToSlide(index) {
+    if (index === currentSlide) return;
+    
+    const direction = index > currentSlide ? 1 : -1;
+    
+    // Clear previous interval
+    clearInterval(slideInterval);
+    
+    // Update dots
+    dots[currentSlide].classList.remove('active');
+    currentSlide = index;
+    dots[currentSlide].classList.add('active');
+    
+    // Update slides
+    updateSlides(direction);
+    
+    // Reset interval
+    slideInterval = setInterval(() => moveSlide(1), SLIDE_DURATION);
+}
+
+// Initialize slider
+updateSlides(0);
+let slideInterval = setInterval(() => moveSlide(1), SLIDE_DURATION);
 
 // Add touch/swipe support
 let touchStartX = 0;
@@ -41,11 +83,13 @@ let touchEndX = 0;
 
 document.querySelector('.hero').addEventListener('touchstart', e => {
     touchStartX = e.changedTouches[0].screenX;
+    clearInterval(slideInterval);
 });
 
 document.querySelector('.hero').addEventListener('touchend', e => {
     touchEndX = e.changedTouches[0].screenX;
     handleSwipe();
+    slideInterval = setInterval(() => moveSlide(1), SLIDE_DURATION);
 });
 
 function handleSwipe() {
@@ -53,15 +97,18 @@ function handleSwipe() {
     const difference = touchStartX - touchEndX;
     
     if (Math.abs(difference) > swipeThreshold) {
-        if (difference > 0) {
-            // Swipe left
-            moveSlide(1);
-        } else {
-            // Swipe right
-            moveSlide(-1);
-        }
+        moveSlide(difference > 0 ? 1 : -1);
     }
 }
+
+// Pause on hover
+document.querySelector('.hero').addEventListener('mouseenter', () => {
+    clearInterval(slideInterval);
+});
+
+document.querySelector('.hero').addEventListener('mouseleave', () => {
+    slideInterval = setInterval(() => moveSlide(1), SLIDE_DURATION);
+});
 
 // Add keyboard navigation
 document.addEventListener('keydown', e => {
@@ -71,13 +118,6 @@ document.addEventListener('keydown', e => {
         moveSlide(1);
     }
 });
-
-// Initialize slider
-updateSlides(0);
-dots[0].classList.add('active');
-
-// Start auto-advance
-let slideInterval = setInterval(() => moveSlide(1), SLIDE_DURATION);
 
 // Add progress indicator
 function updateProgress() {
@@ -138,53 +178,18 @@ window.onclick = function(event) {
     }
 }
 
-// Slider functionality
-let slideIndex = 0;
-const slides = document.getElementsByClassName('slide');
-
-function moveSlide(n) {
-    showSlides(slideIndex += n);
-}
-
-function showSlides(n) {
-    if (n >= slides.length) slideIndex = 0;
-    if (n < 0) slideIndex = slides.length - 1;
-    
-    Array.from(slides).forEach(slide => {
-        slide.style.display = "none";
-    });
-    
-    slides[slideIndex].style.display = "block";
-}
-
-// Auto-advance slides
-setInterval(() => moveSlide(1), 5000);
-
-// Initialize first slide
-showSlides(slideIndex);
-
 // Update the stats animation
 function animateStats() {
-    const stats = document.querySelectorAll('.stat-number');
     const circles = document.querySelectorAll('.progress-ring-circle');
     
-    stats.forEach((stat, index) => {
-        const target = parseInt(stat.getAttribute('data-target'));
-        const current = parseInt(stat.innerText);
-        const increment = target / 100;
+    circles.forEach((circle, index) => {
+        const circumference = 339.292; // 2 * π * radius
+        circle.style.strokeDasharray = circumference;
+        circle.style.strokeDashoffset = circumference;
         
-        if (current < target) {
-            stat.innerText = Math.ceil(current + increment);
-            
-            // Animate the circle
-            const circle = circles[index];
-            const percentage = (current / target) * 100;
-            const circumference = 339.292; // 2 * π * radius
-            const offset = circumference - (percentage / 100) * circumference;
-            circle.style.strokeDashoffset = offset;
-            
-            setTimeout(() => animateStats(), 20);
-        }
+        setTimeout(() => {
+            circle.style.strokeDashoffset = 0;
+        }, index * 200);
     });
 }
 
@@ -193,9 +198,6 @@ const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
         if (entry.isIntersecting) {
             animateStats();
-            entry.target.querySelectorAll('.progress-ring-circle').forEach(circle => {
-                circle.style.strokeDashoffset = 0;
-            });
         }
     });
 }, { threshold: 0.5 });
@@ -276,5 +278,63 @@ document.querySelectorAll('.card').forEach(card => {
     });
 });
 
-// Initialize progress
-updateProgress();
+// Add dynamic counter for stats
+function animateValue(element, start, end, duration) {
+    let startTimestamp = null;
+    const step = (timestamp) => {
+        if (!startTimestamp) startTimestamp = timestamp;
+        const progress = Math.min((timestamp - startTimestamp) / duration, 1);
+        const value = Math.floor(progress * (end - start) + start);
+        element.textContent = value.toLocaleString();
+        if (progress < 1) {
+            window.requestAnimationFrame(step);
+        }
+    };
+    window.requestAnimationFrame(step);
+}
+
+function updateCauseStats() {
+    const stats = document.querySelectorAll('.cause-stats span');
+    stats.forEach(stat => {
+        const text = stat.textContent;
+        if (text.includes('$')) {
+            const value = parseInt(text.replace(/[^0-9]/g, ''));
+            stat.textContent = '$0';
+            animateValue(stat, 0, value, 2000);
+        }
+    });
+}
+
+// Add smooth scroll for buttons
+function initializeSmoothScroll() {
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            e.preventDefault();
+            const target = document.querySelector(this.getAttribute('href'));
+            if (target) {
+                target.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start'
+                });
+            }
+        });
+    });
+}
+
+// Add dynamic background effect
+function initializeBackgroundEffect() {
+    const causes = document.querySelector('.featured-causes');
+    let offset = 0;
+    
+    window.addEventListener('scroll', () => {
+        offset = window.pageYOffset;
+        causes.style.backgroundPosition = `50% ${offset * 0.05}px`;
+    });
+}
+
+// Initialize all dynamic features
+document.addEventListener('DOMContentLoaded', () => {
+    animateStats();
+    initializeSmoothScroll();
+    initializeBackgroundEffect();
+});

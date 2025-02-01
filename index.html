@@ -15,7 +15,11 @@
     <header>
         <div class="header-container">
             <div class="logo">
-                <span class="logo-text">CSHub</span>
+                <img src="images/logo1.png" alt="ShareSphere Logo" class="logo-img">
+                <div class="logo-wrapper">
+                    <span class="logo-text">ShareSphere</span>
+                    <span class="tagline">Share a little, change a lot</span>
+                </div>
             </div>
             <nav class="main-nav">
                 <ul>
@@ -24,7 +28,7 @@
                     <li><a href="#donate" class="nav-link">Donate</a></li>
                     <li><a href="#shop" class="nav-link">Shop</a></li>
                     <li><a href="#volunteer" class="nav-link">Volunteer</a></li>
-                    <li><a href="#financial" class="nav-link">Financial Support</a></li>
+                    <li><a href="#financial" class="nav-link">Financial Aid</a></li>
                     <li><a href="#about" class="nav-link">About</a></li>
                 </ul>
             </nav>
@@ -70,7 +74,7 @@
                         </a>
                     </div>
                 </div>
-                <div class="slide-bg" style="background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.5)), url('https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?auto=format&fit=crop&q=80') center/cover no-repeat"></div>
+                <div class="slide-bg" style="background: url('images/donation-hero.jpg') center/cover no-repeat"></div>
             </div>
 
             <!-- Slide 2 - Shop -->
@@ -84,7 +88,7 @@
                         </a>
                     </div>
                 </div>
-                <div class="slide-bg" style="background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.5)), url('https://images.unsplash.com/photo-1555529669-e69e7aa0ba9a?auto=format&fit=crop&q=80') center/cover no-repeat"></div>
+                <div class="slide-bg" style="background: url('images/shop-hero.jpg') center/cover no-repeat"></div>
             </div>
 
             <!-- Slide 3 - Volunteer -->
@@ -98,7 +102,7 @@
                         </a>
                     </div>
                 </div>
-                <div class="slide-bg" style="background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.5)), url('https://images.unsplash.com/photo-1593113598332-cd288d649433?auto=format&fit=crop&q=80') center/cover no-repeat"></div>
+                <div class="slide-bg" style="background: url('images/volunteer-hero.jpg') center/cover no-repeat"></div>
             </div>
 
             <!-- Slide 4 - Financial Support -->
@@ -112,15 +116,15 @@
                         </a>
                     </div>
                 </div>
-                <div class="slide-bg" style="background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.5)), url('https://images.unsplash.com/photo-1579621970795-87facc2f976d?auto=format&fit=crop&q=80') center/cover no-repeat"></div>
+                <div class="slide-bg" style="background: url('images/financial-hero.jpg') center/cover no-repeat"></div>
             </div>
 
             <!-- Slider Navigation -->
             <div class="slider-nav">
-                <button class="prev-slide" onclick="moveSlide(-1)">
+                <button class="prev-slide">
                     <i class="fas fa-chevron-left"></i>
                 </button>
-                <button class="next-slide" onclick="moveSlide(1)">
+                <button class="next-slide">
                     <i class="fas fa-chevron-right"></i>
                 </button>
             </div>
@@ -151,7 +155,6 @@
                     <svg class="progress-ring">
                         <circle class="progress-ring-circle" cx="60" cy="60" r="54"></circle>
                     </svg>
-                    <span class="stat-number" data-target="15000">0</span>
                 </div>
                 <span class="stat-label">Items Donated</span>
             </div>
@@ -164,7 +167,6 @@
                     <svg class="progress-ring">
                         <circle class="progress-ring-circle" cx="60" cy="60" r="54"></circle>
                     </svg>
-                    <span class="stat-number" data-target="5000">0</span>
                 </div>
                 <span class="stat-label">Active Volunteers</span>
             </div>
@@ -177,7 +179,6 @@
                     <svg class="progress-ring">
                         <circle class="progress-ring-circle" cx="60" cy="60" r="54"></circle>
                     </svg>
-                    <span class="stat-number" data-target="10000">0</span>
                 </div>
                 <span class="stat-label">People Helped</span>
             </div>
@@ -190,35 +191,9 @@
                     <svg class="progress-ring">
                         <circle class="progress-ring-circle" cx="60" cy="60" r="54"></circle>
                     </svg>
-                    <span class="stat-number" data-target="500">0</span>
                 </div>
                 <span class="stat-label">Communities Served</span>
             </div>
-        </div>
-    </section>
-
-    <!-- Featured Causes -->
-    <section class="featured-causes">
-        <h2>Featured Causes</h2>
-        <div class="causes-grid">
-            <div class="cause-card">
-                <div class="cause-icon education-icon">
-                    <i class="fas fa-graduation-cap"></i>
-                </div>
-                <div class="cause-content">
-                    <h3>Education Support</h3>
-                    <p>Help provide educational resources to students in need</p>
-                    <div class="progress-bar">
-                        <div class="progress" style="width: 75%"></div>
-                    </div>
-                    <div class="cause-stats">
-                        <span>Raised: $15,000</span>
-                        <span>Goal: $20,000</span>
-                    </div>
-                    <a href="#" class="btn btn-primary">Support Now</a>
-                </div>
-            </div>
-            <!-- Add more cause cards with different icons -->
         </div>
     </section>
 
@@ -279,31 +254,23 @@
         </div>
     </section>
 
-    <!-- Add a Featured Projects Slider -->
+    <!-- Update the Featured Projects section -->
     <section class="featured-projects">
-        <h2>Featured Projects</h2>
-        <div class="swiper-container">
-            <div class="swiper-wrapper">
-                <div class="swiper-slide">
-                    <div class="project-card">
-                        <div class="project-image" style="background-image: url('https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?auto=format&fit=crop&q=80')"></div>
-                        <div class="project-content">
-                            <h3>Education Support</h3>
-                            <p>Help provide educational resources to students in need</p>
-                            <div class="progress-container">
-                                <div class="progress-bar">
-                                    <div class="progress" style="width: 75%"></div>
-                                </div>
-                                <span class="progress-text">75% Funded</span>
-                            </div>
+        <div class="project-container">
+            <div class="project-card">
+                <div class="project-image" style="background-image: url('https://images.unsplash.com/photo-1503676260728-1c00da094a0b?auto=format&fit=crop&q=80'); background-size: cover; background-position: center;"></div>
+                <div class="project-content">
+                    <h3>Education Support</h3>
+                    <p>Help provide educational resources to students in need</p>
+                    <div class="progress-container">
+                        <div class="progress-bar">
+                            <div class="progress" style="width: 75%"></div>
                         </div>
+                        <span class="progress-text">75% Funded</span>
                     </div>
+                    <a href="#donate" class="btn btn-primary">Support Now</a>
                 </div>
-                <!-- Add more swiper slides as needed -->
             </div>
-            <div class="swiper-pagination"></div>
-            <div class="swiper-button-next"></div>
-            <div class="swiper-button-prev"></div>
         </div>
     </section>
 

@@ -1,17 +1,38 @@
 /* Global Styles */
 :root {
-    --primary-color: #4F46E5;
-    --primary-dark: #4338CA;
-    --secondary-color: #10B981;
-    --background-color: #F9FAFB;
-    --surface-color: #FFFFFF;
-    --text-primary: #111827;
-    --text-secondary: #4B5563;
-    --text-light: #6B7280;
-    --border-color: #E5E7EB;
-    --success-color: #059669;
-    --warning-color: #D97706;
-    --error-color: #DC2626;
+    /* Primary Colors */
+    --primary-dark: #1E40AF;  /* Deep Blue */
+    --primary-main: #2563EB;  /* Royal Blue */
+    --primary-light: #60A5FA; /* Light Blue */
+    
+    /* Secondary Colors */
+    --secondary-dark: #065F46;  /* Deep Green */
+    --secondary-main: #059669;  /* Emerald */
+    --secondary-light: #34D399; /* Light Green */
+    
+    /* Neutral Colors */
+    --neutral-900: #111827; /* Darkest */
+    --neutral-800: #1F2937;
+    --neutral-700: #374151;
+    --neutral-600: #4B5563;
+    --neutral-500: #6B7280;
+    --neutral-400: #9CA3AF;
+    --neutral-300: #D1D5DB;
+    --neutral-200: #E5E7EB;
+    --neutral-100: #F3F4F6;
+    --neutral-50: #F9FAFB;  /* Lightest */
+    
+    /* Accent Colors */
+    --accent-purple: #6D28D9;
+    --accent-indigo: #4F46E5;
+    --accent-blue: #2563EB;
+    --accent-teal: #0D9488;
+    
+    /* Status Colors */
+    --success: #059669;
+    --warning: #D97706;
+    --error: #DC2626;
+    --info: #3B82F6;
 }
 
 * {
@@ -29,26 +50,56 @@ body {
 
 /* Header Styles */
 header {
-    background-color: var(--surface-color);
-    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
-    position: sticky;
+    background-color: rgba(255, 255, 255, 0.98);
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    position: fixed;
     top: 0;
+    left: 0;
+    width: 100%;
     z-index: 1000;
 }
 
 .header-container {
-    max-width: 1200px;
+    max-width: 1400px;
     margin: 0 auto;
-    padding: 1rem;
+    padding: 0.75rem 2rem;
     display: flex;
-    justify-content: space-between;
     align-items: center;
+    gap: 1.5rem;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-right: auto;
+    padding: 0.25rem 0;
+}
+
+.logo-img {
+    height: 45px;
+    width: auto;
+}
+
+.logo-wrapper {
+    display: flex;
+    flex-direction: column;
 }
 
 .logo-text {
-    font-size: 1.5rem;
-    font-weight: 700;
-    color: var(--primary-color);
+    font-size: 1.75rem;
+    font-weight: 800;
+    background: linear-gradient(135deg, var(--primary-main), var(--accent-blue));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    letter-spacing: -0.5px;
+}
+
+.tagline {
+    font-size: 0.85rem;
+    color: var(--neutral-600);
+    font-style: italic;
+    letter-spacing: 0.5px;
 }
 
 /* Hero Section */
@@ -70,8 +121,8 @@ header {
     width: 100%;
     height: 100%;
     opacity: 0;
-    transform: scale(1.1);
-    transition: all 1s cubic-bezier(0.4, 0, 0.2, 1);
+    transform: translateX(100%);
+    transition: all 0.8s ease;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -79,18 +130,18 @@ header {
 
 .hero-slide.active {
     opacity: 1;
-    transform: scale(1);
+    transform: translateX(0);
     z-index: 2;
 }
 
 .hero-slide.prev {
-    transform: translateX(-100%) scale(0.9);
+    transform: translateX(-100%);
     opacity: 0;
     z-index: 1;
 }
 
 .hero-slide.next {
-    transform: translateX(100%) scale(0.9);
+    transform: translateX(100%);
     opacity: 0;
     z-index: 1;
 }
@@ -100,35 +151,28 @@ header {
     z-index: 2;
     max-width: 800px;
     text-align: center;
-    padding: 2rem;
+    padding: 2.5rem;
     color: white;
-    background: rgba(0, 0, 0, 0.2);
-    backdrop-filter: blur(8px);
-    border-radius: 1rem;
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    transform: translateY(30px);
-    opacity: 0;
-    transition: all 1s ease;
-    transition-delay: 0.5s;
-}
-
-.hero-slide.active .slide-content {
-    transform: translateY(0);
-    opacity: 1;
+    background: transparent;
+    border-radius: 1.5rem;
 }
 
 .slide-content h1 {
-    font-size: 4rem;
+    font-size: 4.5rem;
     font-weight: 800;
     margin-bottom: 1.5rem;
-    text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+    text-shadow: 2px 4px 8px rgba(0, 0, 0, 0.5);
+    letter-spacing: -1px;
+    line-height: 1.1;
+    color: #ffffff;
 }
 
 .slide-content p {
     font-size: 1.5rem;
     margin-bottom: 2rem;
-    text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
-    opacity: 0.9;
+    text-shadow: 1px 2px 4px rgba(0, 0, 0, 0.5);
+    opacity: 0.95;
+    color: #f3f4f6;
 }
 
 .hero-buttons {
@@ -149,12 +193,30 @@ header {
     width: 100%;
     height: 100%;
     z-index: 1;
-    transition: transform 6s ease;
+    transition: transform 8s ease;
     transform: scale(1.1);
+    background-size: cover !important;
+    background-position: center !important;
+    filter: brightness(0.6);
 }
 
 .hero-slide.active .slide-bg {
     transform: scale(1);
+}
+
+/* Update preload for smoother transitions */
+.hero::after {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 1px;
+    height: 1px;
+    background: url('images/hero/donation-hero.jpg') no-repeat -9999px -9999px,
+                url('images/hero/shop-hero.jpg') no-repeat -9999px -9999px,
+                url('images/hero/volunteer-hero.jpg') no-repeat -9999px -9999px,
+                url('images/hero/financial-hero.jpg') no-repeat -9999px -9999px;
+    opacity: 0.01;
 }
 
 /* Slider Navigation */
@@ -172,8 +234,8 @@ header {
 
 .prev-slide,
 .next-slide {
-    width: 60px;
-    height: 60px;
+    width: 50px;
+    height: 50px;
     background: rgba(255, 255, 255, 0.15);
     border: 2px solid rgba(255, 255, 255, 0.3);
     color: white;
@@ -184,8 +246,41 @@ header {
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 1.5rem;
     pointer-events: auto;
+    position: relative;
+    overflow: hidden;
+}
+
+.prev-slide::before,
+.next-slide::before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 50%;
+    transform: scale(0);
+    transition: transform 0.3s ease;
+}
+
+.prev-slide:hover::before,
+.next-slide:hover::before {
+    transform: scale(1);
+}
+
+.prev-slide i,
+.next-slide i {
+    font-size: 1.2rem;
+    z-index: 2;
+    transition: transform 0.3s ease;
+}
+
+.prev-slide:hover i {
+    transform: translateX(-3px);
+}
+
+.next-slide:hover i {
+    transform: translateX(3px);
 }
 
 .prev-slide:hover,
@@ -200,17 +295,30 @@ header {
     transform: scale(0.95);
 }
 
-.prev-slide i,
-.next-slide i {
-    transition: transform 0.3s ease;
-}
+/* Add responsive styles */
+@media (max-width: 768px) {
+    .prev-slide,
+    .next-slide {
+        width: 40px;
+        height: 40px;
+    }
 
-.prev-slide:hover i {
-    transform: translateX(-3px);
-}
+    .prev-slide i,
+    .next-slide i {
+        font-size: 1rem;
+    }
 
-.next-slide:hover i {
-    transform: translateX(3px);
+    .logo-img {
+        height: 40px;
+    }
+    
+    .logo-text {
+        font-size: 1.5rem;
+    }
+    
+    .tagline {
+        font-size: 0.8rem;
+    }
 }
 
 .slide-dots {
@@ -345,6 +453,9 @@ header {
     padding: 1.5rem;
     position: relative;
     transition: transform 0.3s ease;
+    background: white;
+    border-radius: 1rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
 }
 
 .stat-circle {
@@ -352,6 +463,7 @@ header {
     width: 120px;
     height: 120px;
     margin-bottom: 1.5rem;
+    transition: transform 0.3s ease;
 }
 
 .stat-icon {
@@ -359,15 +471,16 @@ header {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    width: 50px;
-    height: 50px;
+    width: 60px;
+    height: 60px;
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 1.5rem;
+    font-size: 1.8rem;
     color: white;
     z-index: 2;
+    transition: all 0.3s ease;
 }
 
 .progress-ring {
@@ -378,7 +491,7 @@ header {
 
 .progress-ring-circle {
     fill: none;
-    stroke-width: 8;
+    stroke-width: 6;
     stroke-linecap: round;
     transition: stroke-dashoffset 0.5s ease;
 }
@@ -427,10 +540,25 @@ header {
 }
 
 /* Icon backgrounds */
-.donations-icon { background: linear-gradient(135deg, #FF6B6B, #FF8787); }
-.volunteers-icon { background: linear-gradient(135deg, #4F46E5, #6366F1); }
-.community-icon { background: linear-gradient(135deg, #10B981, #34D399); }
-.location-icon { background: linear-gradient(135deg, #F59E0B, #FBBF24); }
+.donations-icon { 
+    background: linear-gradient(135deg, var(--accent-indigo), var(--primary-light));
+    box-shadow: 0 4px 15px rgba(255, 107, 107, 0.3);
+}
+
+.volunteers-icon { 
+    background: linear-gradient(135deg, var(--primary-main), var(--accent-blue));
+    box-shadow: 0 4px 15px rgba(79, 70, 229, 0.3);
+}
+
+.community-icon { 
+    background: linear-gradient(135deg, var(--secondary-main), var(--secondary-light));
+    box-shadow: 0 4px 15px rgba(16, 185, 129, 0.3);
+}
+
+.location-icon { 
+    background: linear-gradient(135deg, var(--accent-purple), var(--accent-indigo));
+    box-shadow: 0 4px 15px rgba(245, 158, 11, 0.3);
+}
 
 /* Hover effects */
 .stat-card:hover {
@@ -439,6 +567,14 @@ header {
 
 .stat-card:hover .progress-ring-circle {
     stroke-dashoffset: 100;
+}
+
+.stat-card:hover .stat-circle {
+    transform: scale(1.1);
+}
+
+.stat-card:hover .stat-icon {
+    transform: translate(-50%, -50%) scale(1.1);
 }
 
 /* Responsive design */
@@ -483,13 +619,6 @@ header {
     
     .hero {
         height: 80vh;
-    }
-    
-    .prev-slide,
-    .next-slide {
-        width: 50px;
-        height: 50px;
-        font-size: 1.2rem;
     }
 }
 
@@ -571,6 +700,8 @@ header {
     backdrop-filter: blur(5px);
     border: 2px solid white;
     color: white;
+    text-shadow: none;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
 }
 
 .card-content .btn:hover {
@@ -620,7 +751,7 @@ header {
 
 /* Enhanced Footer */
 .main-footer {
-    background: linear-gradient(135deg, var(--text-primary), #2D3748);
+    background: linear-gradient(135deg, var(--neutral-900), var(--neutral-800));
     color: white;
     padding-top: 4rem;
 }
@@ -628,28 +759,107 @@ header {
 /* Navigation and Button Styles */
 .main-nav ul {
     display: flex;
-    gap: 2rem;
+    gap: 0.75rem;
     list-style: none;
     align-items: center;
 }
 
 .nav-link {
     text-decoration: none;
-    color: var(--text-secondary);
-    font-weight: 500;
-    padding: 0.5rem 1rem;
+    padding: 0.75rem 1.25rem;
     border-radius: 0.5rem;
+    font-weight: 600;
     transition: all 0.3s ease;
 }
 
-.nav-link:hover {
-    color: var(--primary-color);
-    background-color: rgba(79, 70, 229, 0.1);
+/* Home Button */
+.nav-link[href="#"] {
+    background: rgba(79, 70, 229, 0.1);
+    color: #4F46E5;
 }
 
+.nav-link[href="#"]:hover {
+    background: rgba(79, 70, 229, 0.15);
+    color: #4338CA;
+}
+
+/* Get Involved Button */
+.nav-link[href="#get-involved"] {
+    background: rgba(16, 185, 129, 0.1);
+    color: #059669;
+}
+
+.nav-link[href="#get-involved"]:hover {
+    background: rgba(16, 185, 129, 0.15);
+    color: #047857;
+}
+
+/* Donate Button */
+.nav-link[href="#donate"] {
+    background: rgba(220, 38, 38, 0.1);
+    color: #DC2626;
+}
+
+.nav-link[href="#donate"]:hover {
+    background: rgba(220, 38, 38, 0.15);
+    color: #B91C1C;
+}
+
+/* Shop Button */
+.nav-link[href="#shop"] {
+    background: rgba(245, 158, 11, 0.1);
+    color: #D97706;
+}
+
+.nav-link[href="#shop"]:hover {
+    background: rgba(245, 158, 11, 0.15);
+    color: #B45309;
+}
+
+/* Volunteer Button */
+.nav-link[href="#volunteer"] {
+    background: rgba(124, 58, 237, 0.1);
+    color: #7C3AED;
+}
+
+.nav-link[href="#volunteer"]:hover {
+    background: rgba(124, 58, 237, 0.15);
+    color: #6D28D9;
+}
+
+/* Financial Aid Button */
+.nav-link[href="#financial"] {
+    background: rgba(37, 99, 235, 0.1);
+    color: #2563EB;
+}
+
+.nav-link[href="#financial"]:hover {
+    background: rgba(37, 99, 235, 0.15);
+    color: #1D4ED8;
+}
+
+/* About Button */
+.nav-link[href="#about"] {
+    background: rgba(107, 114, 128, 0.1);
+    color: #4B5563;
+}
+
+.nav-link[href="#about"]:hover {
+    background: rgba(107, 114, 128, 0.15);
+    color: #374151;
+}
+
+/* Active State for all buttons */
 .nav-link.active {
-    color: var(--primary-color);
-    background-color: rgba(79, 70, 229, 0.1);
+    font-weight: 700;
+    transform: translateY(-1px);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+/* Common hover effect */
+.nav-link:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
 }
 
 /* Button Styles */
@@ -668,27 +878,29 @@ header {
 }
 
 .btn-primary {
-    background: rgba(255, 255, 255, 0.2);
-    border: 2px solid white;
+    background: linear-gradient(135deg, #3730A3, #1E40AF); /* Deeper blue gradient */
+    color: #ffffff;
+    border: none;
+    box-shadow: 0 4px 6px rgba(29, 78, 216, 0.25);
 }
 
 .btn-primary:hover {
-    background: white;
-    color: var(--primary-color);
-    transform: translateY(-5px);
+    background: linear-gradient(135deg, #312E81, #1E3A8A);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(29, 78, 216, 0.35);
 }
 
 .btn-outline {
-    border: 2px solid var(--primary-color);
-    color: var(--primary-color);
+    border: 2px solid #3730A3;
+    color: #3730A3;
+    font-weight: 600;
     background-color: transparent;
 }
 
 .btn-outline:hover {
-    background-color: var(--primary-color);
+    background-color: #3730A3;
     color: white;
-    transform: translateY(-2px);
-    box-shadow: 0 4px 6px rgba(79, 70, 229, 0.2);
+    box-shadow: 0 4px 12px rgba(55, 48, 163, 0.2);
 }
 
 .btn-large {
@@ -705,6 +917,7 @@ header {
     display: flex;
     gap: 1rem;
     align-items: center;
+    margin-left: auto;
 }
 
 /* Hero buttons container */
@@ -766,77 +979,516 @@ header {
     box-shadow: 0 4px 6px rgba(16, 185, 129, 0.2);
 }
 
-/* Featured Projects Slider */
+/* Update Featured Projects styles */
 .featured-projects {
-    padding: 4rem 2rem;
+    padding: 1rem;
     background-color: var(--background-color);
 }
 
-.swiper-container {
-    padding: 2rem;
-    overflow: hidden;
+.project-container {
+    max-width: 1200px;
+    margin: 0 auto;
 }
 
 .project-card {
-    background: var(--surface-color);
+    display: flex;
+    background: white;
     border-radius: 1rem;
     overflow: hidden;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s ease;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    margin: 1rem;
+}
+
+.project-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
 }
 
 .project-image {
-    height: 200px;
-    background-size: cover;
-    background-position: center;
+    width: 50%;
+    min-height: 400px;
+    position: relative;
+    overflow: hidden;
+}
+
+.project-image::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(
+        to right,
+        rgba(0, 0, 0, 0) 0%,
+        rgba(0, 0, 0, 0.2) 100%
+    );
 }
 
 .project-content {
-    padding: 1.5rem;
+    width: 50%;
+    padding: 3rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background: linear-gradient(135deg, #ffffff, #f8fafc);
 }
 
+.project-content h3 {
+    font-size: 2.25rem;
+    font-weight: 800;
+    margin-bottom: 1rem;
+    background: linear-gradient(135deg, var(--primary-dark), var(--primary-main));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    letter-spacing: -0.5px;
+}
+
+.project-content p {
+    font-size: 1.1rem;
+    color: var(--neutral-600);
+    line-height: 1.7;
+    margin-bottom: 2rem;
+}
+
+/* Enhanced Progress Bar */
 .progress-container {
-    margin-top: 1rem;
+    margin: 2rem 0;
 }
 
 .progress-bar {
     height: 8px;
-    background-color: var(--border-color);
-    border-radius: 4px;
+    background: #E5E7EB;
+    border-radius: 999px;
     overflow: hidden;
-    margin-bottom: 0.5rem;
+    position: relative;
 }
 
 .progress {
     height: 100%;
-    background: linear-gradient(to right, var(--primary-color), var(--secondary-color));
-    border-radius: 4px;
-    transition: width 1s ease;
+    background: linear-gradient(
+        90deg,
+        var(--primary-main) 0%,
+        var(--secondary-main) 100%
+    );
+    border-radius: 999px;
+    transition: width 1.5s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    overflow: hidden;
+}
+
+.progress::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(
+        90deg,
+        rgba(255, 255, 255, 0) 0%,
+        rgba(255, 255, 255, 0.3) 50%,
+        rgba(255, 255, 255, 0) 100%
+    );
+    animation: shimmer 2s infinite;
+}
+
+@keyframes shimmer {
+    0% {
+        transform: translateX(-100%);
+    }
+    100% {
+        transform: translateX(100%);
+    }
 }
 
 .progress-text {
-    color: var(--text-secondary);
-    font-size: 0.875rem;
+    font-size: 1rem;
+    font-weight: 600;
+    color: #6B7280;
+    margin-top: 0.5rem;
+    display: flex;
+    justify-content: space-between;
 }
 
-/* Swiper Navigation Styles */
-.swiper-button-next,
-.swiper-button-prev {
-    color: var(--primary-color);
+/* Enhanced Button */
+.project-content .btn {
+    padding: 1rem 2rem;
+    font-size: 1.1rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    background: linear-gradient(135deg, #4F46E5, #3730A3);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(79, 70, 229, 0.3);
 }
 
-.swiper-pagination-bullet-active {
-    background-color: var(--primary-color);
+.project-content .btn:hover {
+    background: linear-gradient(135deg, #4338CA, #312E81);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(79, 70, 229, 0.4);
 }
 
-/* Animation Classes */
-.animate-on-scroll {
-    opacity: 0;
-    transform: translateY(20px);
-    transition: opacity 0.6s ease, transform 0.6s ease;
+/* Responsive Design */
+@media (max-width: 1024px) {
+    .project-content {
+        padding: 2rem;
+    }
+    
+    .project-content h3 {
+        font-size: 2rem;
+    }
 }
 
-.animate-on-scroll.visible {
-    opacity: 1;
-    transform: translateY(0);
+@media (max-width: 768px) {
+    .project-card {
+        flex-direction: column;
+        margin: 1rem 0;
+    }
+    
+    .project-image {
+        width: 100%;
+        min-height: 300px;
+    }
+    
+    .project-content {
+        width: 100%;
+        padding: 2rem;
+    }
+    
+    .project-content h3 {
+        font-size: 1.75rem;
+    }
+}
+
+/* Update text contrast in hero section */
+.slide-content h1 {
+    font-size: 4.5rem;
+    font-weight: 800;
+    margin-bottom: 1.5rem;
+    text-shadow: 2px 4px 8px rgba(0, 0, 0, 0.5);
+    letter-spacing: -1px;
+    line-height: 1.1;
+    color: #ffffff;
+}
+
+.slide-content p {
+    font-size: 1.5rem;
+    margin-bottom: 2rem;
+    text-shadow: 1px 2px 4px rgba(0, 0, 0, 0.5);
+    opacity: 0.95;
+    color: #f3f4f6;
+}
+
+/* Update button styles for better contrast */
+.hero-buttons .btn {
+    background: linear-gradient(135deg, #4F46E5, #3730A3); /* Indigo gradient */
+    color: #ffffff;
+    font-weight: 600;
+    box-shadow: 0 4px 15px rgba(67, 56, 202, 0.4);
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.hero-buttons .btn:hover {
+    background: linear-gradient(135deg, #4338CA, #312E81);
+    border-color: rgba(255, 255, 255, 0.3);
+    box-shadow: 0 6px 20px rgba(67, 56, 202, 0.5);
+}
+
+/* Add text glow effect for better visibility */
+.btn-primary.btn-large {
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+}
+
+/* Update the volunteer button specifically */
+.hero-buttons .btn[href="#volunteer"] {
+    background: linear-gradient(135deg, #7C3AED, #5B21B6); /* Purple gradient */
+    border-color: rgba(255, 255, 255, 0.2);
+}
+
+.hero-buttons .btn[href="#volunteer"]:hover {
+    background: linear-gradient(135deg, #6D28D9, #4C1D95);
+    border-color: rgba(255, 255, 255, 0.3);
+}
+
+/* Add margin to main content to account for fixed header */
+main {
+    margin-top: 80px;
+}
+
+/* Responsive adjustments */
+@media (max-width: 1024px) {
+    .header-container {
+        padding: 0.5rem 1rem;
+    }
+    
+    .logo-img {
+        height: 40px;
+    }
+    
+    .logo-text {
+        font-size: 1.5rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .header-container {
+        flex-wrap: wrap;
+        gap: 1rem;
+    }
+    
+    .main-nav {
+        order: 3;
+        width: 100%;
+        overflow-x: auto;
+    }
+    
+    .main-nav ul {
+        padding-bottom: 0.5rem;
+    }
+}
+
+/* Updated Navigation */
+.nav-link {
+    color: var(--neutral-700);
+    font-weight: 500;
+}
+
+.nav-link:hover {
+    color: var(--primary-main);
+    background-color: rgba(37, 99, 235, 0.08);
+}
+
+.nav-link.active {
+    color: var(--primary-main);
+    background-color: rgba(37, 99, 235, 0.12);
+}
+
+/* Updated Button Styles */
+.btn-primary {
+    background: linear-gradient(135deg, #3730A3, #1E40AF); /* Deeper blue gradient */
+    color: #ffffff;
+    border: none;
+    box-shadow: 0 4px 6px rgba(29, 78, 216, 0.25);
+}
+
+.btn-primary:hover {
+    background: linear-gradient(135deg, #312E81, #1E3A8A);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(29, 78, 216, 0.35);
+}
+
+.btn-outline {
+    border: 2px solid #3730A3;
+    color: #3730A3;
+    font-weight: 600;
+    background-color: transparent;
+}
+
+.btn-outline:hover {
+    background-color: #3730A3;
+    color: white;
+    box-shadow: 0 4px 12px rgba(55, 48, 163, 0.2);
+}
+
+/* Hero Section Updates */
+.hero-buttons .btn {
+    background: linear-gradient(135deg, #4F46E5, #3730A3); /* Indigo gradient */
+    color: #ffffff;
+    font-weight: 600;
+    box-shadow: 0 4px 15px rgba(67, 56, 202, 0.4);
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.hero-buttons .btn:hover {
+    background: linear-gradient(135deg, #4338CA, #312E81);
+    border-color: rgba(255, 255, 255, 0.3);
+    box-shadow: 0 6px 20px rgba(67, 56, 202, 0.5);
+}
+
+/* Progress Bar Updates */
+.progress {
+    background: linear-gradient(
+        90deg,
+        var(--primary-main) 0%,
+        var(--secondary-main) 100%
+    );
+}
+
+/* Card Updates */
+.project-card {
+    background: white;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+}
+
+.project-content h3 {
+    background: linear-gradient(135deg, var(--primary-dark), var(--primary-main));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.project-content p {
+    color: var(--neutral-600);
+}
+
+/* Stats Section Updates */
+.stat-card {
+    background: white;
+    border-radius: 1rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+}
+
+/* Icon Updates */
+.donations-icon { 
+    background: linear-gradient(135deg, var(--accent-indigo), var(--primary-light));
+    box-shadow: 0 4px 15px rgba(255, 107, 107, 0.3);
+}
+
+.volunteers-icon { 
+    background: linear-gradient(135deg, var(--primary-main), var(--accent-blue));
+    box-shadow: 0 4px 15px rgba(79, 70, 229, 0.3);
+}
+
+.community-icon { 
+    background: linear-gradient(135deg, var(--secondary-main), var(--secondary-light));
+    box-shadow: 0 4px 15px rgba(16, 185, 129, 0.3);
+}
+
+.location-icon { 
+    background: linear-gradient(135deg, var(--accent-purple), var(--accent-indigo));
+    box-shadow: 0 4px 15px rgba(245, 158, 11, 0.3);
+}
+
+/* Footer Updates */
+.main-footer {
+    background: linear-gradient(135deg, var(--neutral-900), var(--neutral-800));
+}
+
+/* Enhanced Transitions */
+.btn, .nav-link, .card, .project-card {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Improved Spacing */
+section {
+    padding: 5rem 2rem;
+}
+
+.container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 2rem;
+}
+
+/* Typography Updates */
+h1, h2, h3, h4, h5, h6 {
+    letter-spacing: -0.025em;
+    line-height: 1.2;
+}
+
+p {
+    line-height: 1.7;
+}
+
+/* Updated Button Styles with Better Contrast */
+.btn-primary {
+    background: linear-gradient(135deg, #3730A3, #1E40AF); /* Deeper blue gradient */
+    color: #ffffff;
+    border: none;
+    box-shadow: 0 4px 6px rgba(29, 78, 216, 0.25);
+}
+
+.btn-primary:hover {
+    background: linear-gradient(135deg, #312E81, #1E3A8A);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(29, 78, 216, 0.35);
+}
+
+/* Hero Section Button Updates */
+.hero-buttons .btn {
+    background: linear-gradient(135deg, #4F46E5, #3730A3); /* Indigo gradient */
+    color: #ffffff;
+    font-weight: 600;
+    box-shadow: 0 4px 15px rgba(67, 56, 202, 0.4);
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.hero-buttons .btn:hover {
+    background: linear-gradient(135deg, #4338CA, #312E81);
+    border-color: rgba(255, 255, 255, 0.3);
+    box-shadow: 0 6px 20px rgba(67, 56, 202, 0.5);
+}
+
+/* Donate Button Special Style */
+.hero-buttons .btn[href="#donate"] {
+    background: linear-gradient(135deg, #DC2626, #991B1B); /* Red gradient */
+    border-color: rgba(255, 255, 255, 0.2);
+}
+
+.hero-buttons .btn[href="#donate"]:hover {
+    background: linear-gradient(135deg, #B91C1C, #7F1D1D);
+    border-color: rgba(255, 255, 255, 0.3);
+}
+
+/* Volunteer Button Special Style */
+.hero-buttons .btn[href="#volunteer"] {
+    background: linear-gradient(135deg, #7C3AED, #5B21B6); /* Purple gradient */
+    border-color: rgba(255, 255, 255, 0.2);
+}
+
+.hero-buttons .btn[href="#volunteer"]:hover {
+    background: linear-gradient(135deg, #6D28D9, #4C1D95);
+    border-color: rgba(255, 255, 255, 0.3);
+}
+
+/* Outline Button Update */
+.btn-outline {
+    border: 2px solid #3730A3;
+    color: #3730A3;
+    font-weight: 600;
+    background-color: transparent;
+}
+
+.btn-outline:hover {
+    background-color: #3730A3;
+    color: white;
+    box-shadow: 0 4px 12px rgba(55, 48, 163, 0.2);
+}
+
+/* Project Card Button */
+.project-content .btn {
+    background: linear-gradient(135deg, #4F46E5, #3730A3);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    box-shadow: 0 4px 15px rgba(79, 70, 229, 0.3);
+}
+
+.project-content .btn:hover {
+    background: linear-gradient(135deg, #4338CA, #312E81);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(79, 70, 229, 0.4);
+}
+
+/* Add hover transition for all buttons */
+.btn {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Add text shadow for better readability on buttons */
+.btn-primary, .hero-buttons .btn {
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
 }
