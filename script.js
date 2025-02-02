@@ -338,3 +338,20 @@ document.addEventListener('DOMContentLoaded', () => {
     initializeSmoothScroll();
     initializeBackgroundEffect();
 });
+
+document.addEventListener('DOMContentLoaded', function() {
+    const bankDetailsCheckbox = document.getElementById('showBankDetails');
+    const bankDetailsSection = document.getElementById('bankDetailsSection');
+
+    if (bankDetailsCheckbox && bankDetailsSection) {
+        bankDetailsCheckbox.addEventListener('change', function() {
+            bankDetailsSection.classList.toggle('hidden');
+            
+            // Remove required attribute when hidden, add when shown
+            const inputs = bankDetailsSection.querySelectorAll('input');
+            inputs.forEach(input => {
+                input.required = this.checked;
+            });
+        });
+    }
+});
