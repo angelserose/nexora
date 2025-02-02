@@ -654,6 +654,8 @@ header {
     align-items: center;
     justify-content: center;
     padding: 2rem;
+    background-size: cover !important;
+    background-position: center !important;
 }
 
 .card::before {
@@ -661,12 +663,9 @@ header {
     position: absolute;
     top: 0;
     left: 0;
-    right: 0;
-    bottom: 0;
-    background: linear-gradient(to bottom, 
-        rgba(0,0,0,0.2),
-        rgba(0,0,0,0.7)
-    );
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.7));
     z-index: 1;
 }
 
@@ -770,11 +769,23 @@ header {
 }
 
 .nav-link {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
     text-decoration: none;
     padding: 0.75rem 1.25rem;
     border-radius: 0.5rem;
     font-weight: 600;
     transition: all 0.3s ease;
+}
+
+.nav-link i {
+    font-size: 1.1rem;
+    transition: transform 0.2s ease;
+}
+
+.nav-link:hover i {
+    transform: scale(1.1);
 }
 
 /* Home Button */
@@ -800,45 +811,45 @@ header {
 }
 
 /* Donate Button */
-.nav-link[href="#donate"] {
+.nav-link[href="pages/donate.html"] {
     background: rgba(220, 38, 38, 0.1);
     color: #DC2626;
 }
 
-.nav-link[href="#donate"]:hover {
+.nav-link[href="pages/donate.html"]:hover {
     background: rgba(220, 38, 38, 0.15);
     color: #B91C1C;
 }
 
 /* Shop Button */
-.nav-link[href="#shop"] {
+.nav-link[href="pages/shop.html"] {
     background: rgba(245, 158, 11, 0.1);
     color: #D97706;
 }
 
-.nav-link[href="#shop"]:hover {
+.nav-link[href="pages/shop.html"]:hover {
     background: rgba(245, 158, 11, 0.15);
     color: #B45309;
 }
 
 /* Volunteer Button */
-.nav-link[href="#volunteer"] {
+.nav-link[href="pages/volunteer.html"] {
     background: rgba(124, 58, 237, 0.1);
     color: #7C3AED;
 }
 
-.nav-link[href="#volunteer"]:hover {
+.nav-link[href="pages/volunteer.html"]:hover {
     background: rgba(124, 58, 237, 0.15);
     color: #6D28D9;
 }
 
 /* Financial Aid Button */
-.nav-link[href="#financial"] {
+.nav-link[href="pages/financial.html"] {
     background: rgba(37, 99, 235, 0.1);
     color: #2563EB;
 }
 
-.nav-link[href="#financial"]:hover {
+.nav-link[href="pages/financial.html"]:hover {
     background: rgba(37, 99, 235, 0.15);
     color: #1D4ED8;
 }
@@ -854,7 +865,7 @@ header {
     color: #374151;
 }
 
-/* Active State for all buttons */
+/* Active State */
 .nav-link.active {
     font-weight: 700;
     transform: translateY(-1px);
@@ -865,6 +876,19 @@ header {
 .nav-link:hover {
     transform: translateY(-1px);
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .main-nav {
+        overflow-x: auto;
+        padding-bottom: 1rem;
+    }
+
+    .main-nav ul {
+        width: max-content;
+        padding: 0 1rem;
+    }
 }
 
 /* Button Styles */
@@ -1500,21 +1524,28 @@ p {
 
 /* Page Content Styles */
 .page-content {
-    margin-top: 80px; /* Account for fixed header */
-    min-height: calc(100vh - 80px);
+    padding-top: 80px;
 }
 
 .page-hero {
-    background: linear-gradient(135deg, var(--primary-dark), var(--primary-main));
-    color: white;
-    padding: 4rem 2rem;
+    background-size: cover !important;
+    background-position: center !important;
+    background-repeat: no-repeat !important;
+    height: 300px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
     text-align: center;
+    color: white;
+    padding: 2rem;
 }
 
 .page-hero h1 {
     font-size: 3.5rem;
+    font-weight: 800;
     margin-bottom: 1rem;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+    text-shadow: 2px 4px 8px rgba(0, 0, 0, 0.3);
 }
 
 .page-hero p {
@@ -1522,383 +1553,290 @@ p {
     opacity: 0.9;
 }
 
-/* Grid Layouts */
+/* Donation Options Grid */
+.donation-options {
+    padding: 4rem 2rem;
+}
+
 .options-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 2rem;
-    padding: 4rem 0;
+    max-width: 1200px;
+    margin: 0 auto;
 }
 
-/* Card Styles */
-.option-card, .donation-card {
+.donation-card {
     background: white;
-    padding: 2rem;
-    border-radius: 1rem;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    padding: 2.5rem 2rem;
+    border-radius: 1.5rem;
     text-align: center;
-    transition: transform 0.3s ease;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
 }
 
-.option-card:hover, .donation-card:hover {
+.donation-card:hover {
     transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
 }
 
-.option-card i, .donation-card i {
+.donation-card i {
     font-size: 2.5rem;
     margin-bottom: 1.5rem;
-    color: var(--primary-main);
+    padding: 1rem;
+    border-radius: 1rem;
+    transition: all 0.3s ease;
 }
 
-.option-card h3, .donation-card h3 {
+/* Specific icon colors */
+.donation-card:nth-child(1) i {
+    color: #DC2626;
+    background: rgba(220, 38, 38, 0.1);
+}
+
+.donation-card:nth-child(2) i {
+    color: #059669;
+    background: rgba(5, 150, 105, 0.1);
+}
+
+.donation-card:nth-child(3) i {
+    color: #2563EB;
+    background: rgba(37, 99, 235, 0.1);
+}
+
+.donation-card:hover i {
+    transform: scale(1.1);
+}
+
+.donation-card h3 {
+    font-size: 1.5rem;
     margin-bottom: 1rem;
     color: var(--neutral-900);
+    font-weight: 600;
 }
 
-.option-card p, .donation-card p {
-    margin-bottom: 1.5rem;
+.donation-card p {
     color: var(--neutral-600);
+    margin-bottom: 1.5rem;
+    line-height: 1.6;
 }
 
-/* Responsive Adjustments */
+.donation-card .btn-primary {
+    background: linear-gradient(135deg, var(--primary-main), var(--primary-dark));
+    color: white;
+    font-weight: 600;
+}
+
+.donation-card .btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* Responsive Design */
 @media (max-width: 768px) {
     .page-hero h1 {
         font-size: 2.5rem;
     }
     
-    .options-grid {
-        grid-template-columns: 1fr;
+    .donation-options {
         padding: 2rem 1rem;
     }
 }
 
-/* Donation Page Styles */
-.donation-page {
-    margin-top: 80px;
+/* Card Styles for All Pages */
+.options-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    padding: 2rem;
 }
 
-.donation-hero {
-    height: calc(100vh - 80px);
+/* Shop Cards */
+.shop-card {
+    background: white;
+    padding: 2.5rem 2rem;
+    border-radius: 1.5rem;
+    text-align: center;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+    border: 2px solid #E5E7EB;
+    position: relative;
+    overflow: hidden;
+}
+
+.shop-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 5px;
+    background: linear-gradient(135deg, #3B82F6, #2563EB);
+}
+
+.shop-card i {
+    font-size: 2.5rem;
+    margin-bottom: 1.5rem;
+    color: #2563EB;
+    background: rgba(59, 130, 246, 0.1);
+    padding: 1rem;
+    border-radius: 1rem;
+    transition: all 0.3s ease;
+}
+
+/* Volunteer Cards */
+.volunteer-card {
+    background: white;
+    padding: 2.5rem 2rem;
+    border-radius: 1.5rem;
+    text-align: center;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+    border: 2px solid #E5E7EB;
+    position: relative;
+    overflow: hidden;
+}
+
+.volunteer-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 5px;
+    background: linear-gradient(135deg, #8B5CF6, #6D28D9);
+}
+
+.volunteer-card i {
+    font-size: 2.5rem;
+    margin-bottom: 1.5rem;
+    color: #6D28D9;
+    background: rgba(139, 92, 246, 0.1);
+    padding: 1rem;
+    border-radius: 1rem;
+    transition: all 0.3s ease;
+}
+
+/* Financial Cards */
+.financial-card {
+    background: white;
+    padding: 2.5rem 2rem;
+    border-radius: 1.5rem;
+    text-align: center;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+    border: 2px solid #E5E7EB;
+    position: relative;
+    overflow: hidden;
+}
+
+.financial-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 5px;
+    background: linear-gradient(135deg, #10B981, #059669);
+}
+
+.financial-card i {
+    font-size: 2.5rem;
+    margin-bottom: 1.5rem;
+    color: #059669;
+    background: rgba(16, 185, 129, 0.1);
+    padding: 1rem;
+    border-radius: 1rem;
+    transition: all 0.3s ease;
+}
+
+/* Common Card Styles */
+.shop-card:hover,
+.volunteer-card:hover,
+.financial-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+}
+
+.shop-card:hover i,
+.volunteer-card:hover i,
+.financial-card:hover i {
+    transform: scale(1.1);
+}
+
+.shop-card h3,
+.volunteer-card h3,
+.financial-card h3 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    color: var(--neutral-900);
+    font-weight: 600;
+}
+
+.shop-card p,
+.volunteer-card p,
+.financial-card p {
+    color: var(--neutral-600);
+    margin-bottom: 1.5rem;
+    line-height: 1.6;
+}
+
+/* Button Styles */
+.btn-primary {
+    display: inline-block;
+    padding: 0.75rem 1.5rem;
+    border-radius: 0.75rem;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.shop-card .btn-primary {
+    background: linear-gradient(135deg, #3B82F6, #2563EB);
+    color: white;
+}
+
+.volunteer-card .btn-primary {
+    background: linear-gradient(135deg, #8B5CF6, #6D28D9);
+    color: white;
+}
+
+.financial-card .btn-primary {
+    background: linear-gradient(135deg, #10B981, #059669);
+    color: white;
+}
+
+.btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* Background Image Styles */
+.page-hero {
     background-size: cover !important;
     background-position: center !important;
     background-repeat: no-repeat !important;
+}
+
+.card {
+    background-size: cover !important;
+    background-position: center !important;
     position: relative;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    color: white;
 }
 
-.donation-overlay {
-    background: rgba(0, 0, 0, 0.6);
-    padding: 4rem;
-    border-radius: 2rem;
-    backdrop-filter: blur(8px);
-    max-width: 600px;
-    width: 90%;
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
-}
-
-.donation-hero h1 {
-    font-size: 3.5rem;
-    margin-bottom: 1.5rem;
-    font-weight: 800;
-    text-shadow: 2px 4px 8px rgba(0, 0, 0, 0.3);
-}
-
-.donation-hero p {
-    font-size: 1.25rem;
-    margin-bottom: 3rem;
-    opacity: 0.9;
-}
-
-.donation-actions {
-    display: flex;
-    gap: 2rem;
-    justify-content: center;
-}
-
-/* Donation Action Buttons */
-.btn-donate {
-    background: linear-gradient(135deg, #DC2626, #991B1B);
-    color: white;
-    padding: 1.25rem 2.5rem;
-    font-size: 1.1rem;
-    font-weight: 600;
-    border-radius: 50px;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    transition: all 0.3s ease;
-    border: 2px solid rgba(255, 255, 255, 0.2);
-    text-decoration: none;
-    display: inline-flex;
-    align-items: center;
-    gap: 0.5rem;
-}
-
-.btn-donate:hover {
-    background: linear-gradient(135deg, #B91C1C, #7F1D1D);
-    transform: translateY(-2px);
-    box-shadow: 0 8px 20px rgba(220, 38, 38, 0.4);
-    border-color: rgba(255, 255, 255, 0.3);
-}
-
-.btn-claim {
-    background: linear-gradient(135deg, #2563EB, #1D4ED8);
-    color: white;
-    padding: 1.25rem 2.5rem;
-    font-size: 1.1rem;
-    font-weight: 600;
-    border-radius: 50px;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    transition: all 0.3s ease;
-    border: 2px solid rgba(255, 255, 255, 0.2);
-    text-decoration: none;
-    display: inline-flex;
-    align-items: center;
-    gap: 0.5rem;
-}
-
-.btn-claim:hover {
-    background: linear-gradient(135deg, #1E40AF, #1E3A8A);
-    transform: translateY(-2px);
-    box-shadow: 0 8px 20px rgba(37, 99, 235, 0.4);
-    border-color: rgba(255, 255, 255, 0.3);
-}
-
-/* Responsive Design */
-@media (max-width: 768px) {
-    .donation-hero h1 {
-        font-size: 2.5rem;
-    }
-    
-    .donation-actions {
-        flex-direction: column;
-        gap: 1rem;
-    }
-    
-    .btn-donate, .btn-claim {
-        width: 100%;
-        justify-content: center;
-    }
-    
-    .donation-overlay {
-        padding: 2rem;
-    }
-}
-
-/* Choice Page Styles */
-.donation-choice {
-    min-height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: white;
-    padding: 2rem;
-}
-
-.choice-container {
-    background: rgba(0, 0, 0, 0.7);
-    padding: 4rem;
-    border-radius: 2rem;
-    backdrop-filter: blur(10px);
-    text-align: center;
-    max-width: 800px;
-    width: 90%;
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
-}
-
-.choice-container h1 {
-    font-size: 3.5rem;
-    margin-bottom: 1rem;
-    font-weight: 800;
-    text-shadow: 2px 4px 8px rgba(0, 0, 0, 0.3);
-}
-
-.choice-container p {
-    font-size: 1.25rem;
-    margin-bottom: 3rem;
-    opacity: 0.9;
-}
-
-.choice-buttons {
-    display: flex;
-    gap: 2rem;
-    justify-content: center;
-}
-
-.btn-choice {
-    flex: 1;
-    max-width: 300px;
-    padding: 2rem;
-    border-radius: 1.5rem;
-    text-decoration: none;
-    color: white;
-    display: flex;
-    align-items: center;
-    gap: 1.5rem;
-    transition: all 0.3s ease;
-    border: 2px solid rgba(255, 255, 255, 0.2);
-}
-
-.btn-choice i {
-    font-size: 2.5rem;
-}
-
-.btn-choice span {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 0.25rem;
-    text-align: left;
-}
-
-.btn-choice strong {
-    font-size: 1.25rem;
-    font-weight: 600;
-}
-
-.btn-choice small {
-    font-size: 0.9rem;
-    opacity: 0.9;
-}
-
-.btn-choice.btn-donate {
-    background: linear-gradient(135deg, #DC2626, #991B1B);
-}
-
-.btn-choice.btn-donate:hover {
-    background: linear-gradient(135deg, #B91C1C, #7F1D1D);
-    transform: translateY(-5px);
-    box-shadow: 0 8px 20px rgba(220, 38, 38, 0.4);
-    border-color: rgba(255, 255, 255, 0.3);
-}
-
-.btn-choice.btn-claim {
-    background: linear-gradient(135deg, #2563EB, #1D4ED8);
-}
-
-.btn-choice.btn-claim:hover {
-    background: linear-gradient(135deg, #1E40AF, #1E3A8A);
-    transform: translateY(-5px);
-    box-shadow: 0 8px 20px rgba(37, 99, 235, 0.4);
-    border-color: rgba(255, 255, 255, 0.3);
-}
-
-/* Responsive Design */
-@media (max-width: 768px) {
-    .choice-container {
-        padding: 2rem;
-    }
-
-    .choice-container h1 {
-        font-size: 2.5rem;
-    }
-
-    .choice-buttons {
-        flex-direction: column;
-        gap: 1rem;
-    }
-
-    .btn-choice {
-        max-width: 100%;
-    }
-}
-
-/* Donation Form Page Styles */
-.donation-form-page {
-    min-height: 100vh;
-    background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
-                url('https://images.unsplash.com/photo-1489987707025-afc232f7ea0f?ixlib=rb-4.0.3') center/cover no-repeat fixed;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 2rem;
-}
-
-.form-container {
-    background: rgba(255, 255, 255, 0.95);
-    padding: 3rem;
-    border-radius: 1.5rem;
+.card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
     width: 100%;
-    max-width: 600px;
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+    height: 100%;
+    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.7));
+    z-index: 1;
 }
 
-.form-header {
-    text-align: center;
-    margin-bottom: 2.5rem;
-}
-
-.form-header h1 {
-    color: var(--primary-dark);
-    font-size: 2.5rem;
-    margin-bottom: 0.5rem;
-}
-
-.form-header p {
-    color: var(--neutral-600);
-}
-
-.donation-form {
-    display: flex;
-    flex-direction: column;
-    gap: 1.5rem;
-}
-
-.form-group {
-    display: flex;
-    flex-direction: column;
-    gap: 0.5rem;
-}
-
-.form-group label {
-    font-weight: 600;
-    color: var(--neutral-700);
-}
-
-.form-group input,
-.form-group textarea {
-    padding: 0.75rem;
-    border: 2px solid var(--neutral-200);
-    border-radius: 0.5rem;
-    font-size: 1rem;
-    transition: all 0.3s ease;
-}
-
-.form-group input:focus,
-.form-group textarea:focus {
-    border-color: var(--primary-main);
-    outline: none;
-    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
-}
-
-.form-actions {
-    display: flex;
-    gap: 1rem;
-    margin-top: 1rem;
-}
-
-.form-actions .btn {
-    flex: 1;
-    padding: 1rem;
-    font-size: 1.1rem;
-    text-align: center;
-}
-
-/* Responsive Design */
-@media (max-width: 768px) {
-    .form-container {
-        padding: 2rem;
-    }
-
-    .form-header h1 {
-        font-size: 2rem;
-    }
-
-    .form-actions {
-        flex-direction: column;
-    }
+.card-content {
+    position: relative;
+    z-index: 2;
 }
